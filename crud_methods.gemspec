@@ -3,7 +3,7 @@ lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'crud_methods/version'
 
-DESC = "order-independent declarative definition of action-dependent controller methods - default rails CRUD actions"
+DESC = "design pattern that allows order-independent class-level definition of action-dependent controller methods for rails - action types default to rails CRUD actions "
 
 Gem::Specification.new do |gem|
   gem.name          = "crud_methods"
