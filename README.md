@@ -5,9 +5,9 @@ action-dependent controller methods in an order-independent declarative way. The
 
 This gem is supposed to be used by restful/resourceful controller abstractions as a simple and flexible interface for the user to set potentially action-specific behavour.
 
-Here I give some end-user cases. Note that this gem does not provide the controller abstraction functionalities, just demonstrate a common use of this specification pattern.
+Here I give some end-user cases. Note that this gem does not provide the particular controller abstraction functionalities in the examples, just demonstrate a common use of this specification pattern.
 
-1. a resourceful controller scaffold but adding a search action. The user just hooks into the resource retrieval scope chain, otherwise all behave as a crud index-type action (:
+1. a resourceful controller scaffold but adding a search action. The user just hooks into the resource retrieval scope chain, otherwise all behave as a crud index-type action:
  
 ```ruby
 class ModelsController
@@ -30,6 +30,8 @@ class ModelsController
   end
 end
 ```
+
+How these would use `crud_methods` is described in 'Usage' section.
 
 ## Features
 
@@ -76,12 +78,13 @@ end
 
 ## Implementation
 
-This gem is basically a paticular use-case of the [`state_methods` gem](https://github.com/zelig/state_methods.git) on controller classes where the 'state accessor method' is `action_name` and the default state partition is the usual CRUD actions of rails.
+This gem is basically a paticular use case of the [`state_methods` gem](https://github.com/zelig/state_methods.git) on controller classes where the 'state accessor method' is `action_name` and the default state partition is the usual CRUD actions of rails.
 
 ## Gotchas
 
-- do not use `super` within the class-level method definition block. it won't refer to anything reliable. use _fallback_ calls. (:TODO: add more info).
-- specifying a method for a type (of action), will not override other specs for a subtype (or particular action) either earlier or later. This may be counterintuitive to some. especially that  specifications for action types can be 'hidden' coming via controller inheritance or included modules.
+- do not use `super` within the class-level method definition block. it won't refer to anything reliable. use _fallback_ calls. :TODO: add more info.
+- specifying a method for a type (of action), will not override other specs for a subtype (or particular action) either earlier or later. This may be counterintuitive to some especially that  specifications for action types can be 'hidden' coming via controller inheritance or included modules. :TODO: add more info.
+- see the [documentation of the `state_methods` gem](https://github.com/zelig/state_methods.git)
 
 ## Installation
 
